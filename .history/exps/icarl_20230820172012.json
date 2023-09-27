@@ -7,8 +7,9 @@
     "shuffle": true,
     "init_cls": 10,
     "increment": 10,
-    "model_name": "ewc",
-    "convnet_type": "vit",
+    "model_name": "icarl",
+    "convnet_type": "resnet32", #vit
     "device": ["mps"],
     "seed": [1993]
 }
+

@@ -1,0 +1,342 @@
+2023-08-20 17:58:34,248 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 17:58:34,248 [trainer.py] => prefix: reproduce
+2023-08-20 17:58:34,248 [trainer.py] => dataset: cifar100
+2023-08-20 17:58:34,248 [trainer.py] => memory_size: 2000
+2023-08-20 17:58:34,248 [trainer.py] => memory_per_class: 20
+2023-08-20 17:58:34,248 [trainer.py] => fixed_memory: False
+2023-08-20 17:58:34,248 [trainer.py] => shuffle: True
+2023-08-20 17:58:34,248 [trainer.py] => init_cls: 10
+2023-08-20 17:58:34,249 [trainer.py] => increment: 10
+2023-08-20 17:58:34,249 [trainer.py] => model_name: ewc
+2023-08-20 17:58:34,249 [trainer.py] => convnet_type: vit
+2023-08-20 17:58:34,249 [trainer.py] => device: [device(type='mps')]
+2023-08-20 17:58:34,249 [trainer.py] => seed: 1993
+2023-08-20 17:59:45,754 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 17:59:45,754 [trainer.py] => prefix: reproduce
+2023-08-20 17:59:45,754 [trainer.py] => dataset: cifar100
+2023-08-20 17:59:45,754 [trainer.py] => memory_size: 2000
+2023-08-20 17:59:45,754 [trainer.py] => memory_per_class: 20
+2023-08-20 17:59:45,754 [trainer.py] => fixed_memory: False
+2023-08-20 17:59:45,754 [trainer.py] => shuffle: True
+2023-08-20 17:59:45,754 [trainer.py] => init_cls: 10
+2023-08-20 17:59:45,754 [trainer.py] => increment: 10
+2023-08-20 17:59:45,754 [trainer.py] => model_name: ewc
+2023-08-20 17:59:45,754 [trainer.py] => convnet_type: vit
+2023-08-20 17:59:45,754 [trainer.py] => device: [device(type='mps')]
+2023-08-20 17:59:45,754 [trainer.py] => seed: 1993
+2023-08-20 18:00:11,698 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:00:11,698 [trainer.py] => prefix: reproduce
+2023-08-20 18:00:11,698 [trainer.py] => dataset: cifar100
+2023-08-20 18:00:11,698 [trainer.py] => memory_size: 2000
+2023-08-20 18:00:11,698 [trainer.py] => memory_per_class: 20
+2023-08-20 18:00:11,698 [trainer.py] => fixed_memory: False
+2023-08-20 18:00:11,698 [trainer.py] => shuffle: True
+2023-08-20 18:00:11,698 [trainer.py] => init_cls: 10
+2023-08-20 18:00:11,698 [trainer.py] => increment: 10
+2023-08-20 18:00:11,698 [trainer.py] => model_name: ewc
+2023-08-20 18:00:11,698 [trainer.py] => convnet_type: vit
+2023-08-20 18:00:11,698 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:00:11,698 [trainer.py] => seed: 1993
+2023-08-20 18:01:24,241 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:01:24,241 [trainer.py] => prefix: reproduce
+2023-08-20 18:01:24,241 [trainer.py] => dataset: cifar100
+2023-08-20 18:01:24,241 [trainer.py] => memory_size: 2000
+2023-08-20 18:01:24,241 [trainer.py] => memory_per_class: 20
+2023-08-20 18:01:24,241 [trainer.py] => fixed_memory: False
+2023-08-20 18:01:24,241 [trainer.py] => shuffle: True
+2023-08-20 18:01:24,241 [trainer.py] => init_cls: 10
+2023-08-20 18:01:24,241 [trainer.py] => increment: 10
+2023-08-20 18:01:24,241 [trainer.py] => model_name: ewc
+2023-08-20 18:01:24,241 [trainer.py] => convnet_type: vit
+2023-08-20 18:01:24,241 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:01:24,241 [trainer.py] => seed: 1993
+2023-08-20 18:01:25,178 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:01:25,928 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:02:33,266 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:02:33,267 [trainer.py] => prefix: reproduce
+2023-08-20 18:02:33,267 [trainer.py] => dataset: cifar100
+2023-08-20 18:02:33,267 [trainer.py] => memory_size: 2000
+2023-08-20 18:02:33,267 [trainer.py] => memory_per_class: 20
+2023-08-20 18:02:33,267 [trainer.py] => fixed_memory: False
+2023-08-20 18:02:33,267 [trainer.py] => shuffle: True
+2023-08-20 18:02:33,267 [trainer.py] => init_cls: 10
+2023-08-20 18:02:33,267 [trainer.py] => increment: 10
+2023-08-20 18:02:33,267 [trainer.py] => model_name: ewc
+2023-08-20 18:02:33,267 [trainer.py] => convnet_type: vit
+2023-08-20 18:02:33,267 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:02:33,267 [trainer.py] => seed: 1993
+2023-08-20 18:02:34,153 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:02:34,339 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:02:49,961 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:02:49,962 [trainer.py] => prefix: reproduce
+2023-08-20 18:02:49,962 [trainer.py] => dataset: cifar100
+2023-08-20 18:02:49,962 [trainer.py] => memory_size: 2000
+2023-08-20 18:02:49,962 [trainer.py] => memory_per_class: 20
+2023-08-20 18:02:49,962 [trainer.py] => fixed_memory: False
+2023-08-20 18:02:49,962 [trainer.py] => shuffle: True
+2023-08-20 18:02:49,962 [trainer.py] => init_cls: 10
+2023-08-20 18:02:49,962 [trainer.py] => increment: 10
+2023-08-20 18:02:49,962 [trainer.py] => model_name: ewc
+2023-08-20 18:02:49,962 [trainer.py] => convnet_type: vit
+2023-08-20 18:02:49,962 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:02:49,962 [trainer.py] => seed: 1993
+2023-08-20 18:02:50,856 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:03:36,015 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:03:36,016 [trainer.py] => prefix: reproduce
+2023-08-20 18:03:36,016 [trainer.py] => dataset: cifar100
+2023-08-20 18:03:36,016 [trainer.py] => memory_size: 2000
+2023-08-20 18:03:36,016 [trainer.py] => memory_per_class: 20
+2023-08-20 18:03:36,016 [trainer.py] => fixed_memory: False
+2023-08-20 18:03:36,016 [trainer.py] => shuffle: True
+2023-08-20 18:03:36,016 [trainer.py] => init_cls: 10
+2023-08-20 18:03:36,016 [trainer.py] => increment: 10
+2023-08-20 18:03:36,016 [trainer.py] => model_name: ewc
+2023-08-20 18:03:36,016 [trainer.py] => convnet_type: vit
+2023-08-20 18:03:36,016 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:03:36,016 [trainer.py] => seed: 1993
+2023-08-20 18:03:36,914 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:10:30,825 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:10:30,825 [trainer.py] => prefix: reproduce
+2023-08-20 18:10:30,825 [trainer.py] => dataset: cifar100
+2023-08-20 18:10:30,825 [trainer.py] => memory_size: 2000
+2023-08-20 18:10:30,825 [trainer.py] => memory_per_class: 20
+2023-08-20 18:10:30,825 [trainer.py] => fixed_memory: False
+2023-08-20 18:10:30,825 [trainer.py] => shuffle: True
+2023-08-20 18:10:30,825 [trainer.py] => init_cls: 10
+2023-08-20 18:10:30,825 [trainer.py] => increment: 10
+2023-08-20 18:10:30,825 [trainer.py] => model_name: ewc
+2023-08-20 18:10:30,825 [trainer.py] => convnet_type: vit
+2023-08-20 18:10:30,825 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:10:30,825 [trainer.py] => seed: 1993
+2023-08-20 18:10:31,573 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:10:32,123 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:10:33,474 [hub.py] => Downloading: "https://storage.googleapis.com/vit_models/augreg/B_16-i21k-300ep-lr_0.001-aug_medium1-wd_0.1-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.01-res_224.npz" to /Users/purple/.cache/torch/hub/checkpoints/B_16-i21k-300ep-lr_0.001-aug_medium1-wd_0.1-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.01-res_224.npz
+
+2023-08-20 18:15:35,811 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:15:35,811 [trainer.py] => prefix: reproduce
+2023-08-20 18:15:35,811 [trainer.py] => dataset: cifar100
+2023-08-20 18:15:35,811 [trainer.py] => memory_size: 2000
+2023-08-20 18:15:35,811 [trainer.py] => memory_per_class: 20
+2023-08-20 18:15:35,811 [trainer.py] => fixed_memory: False
+2023-08-20 18:15:35,811 [trainer.py] => shuffle: True
+2023-08-20 18:15:35,811 [trainer.py] => init_cls: 10
+2023-08-20 18:15:35,811 [trainer.py] => increment: 10
+2023-08-20 18:15:35,811 [trainer.py] => model_name: ewc
+2023-08-20 18:15:35,811 [trainer.py] => convnet_type: vit
+2023-08-20 18:15:35,811 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:15:35,811 [trainer.py] => seed: 1993
+2023-08-20 18:15:36,575 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:15:36,894 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:15:38,230 [hub.py] => Downloading: "https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz" to /Users/purple/.cache/torch/hub/checkpoints/ViT-B_16.npz
+
+2023-08-20 18:16:30,348 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:16:30,351 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:16:30,517 [trainer.py] => All params: 171816392
+2023-08-20 18:16:30,517 [trainer.py] => Trainable params: 122980
+2023-08-20 18:30:57,167 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:30:57,167 [trainer.py] => prefix: reproduce
+2023-08-20 18:30:57,167 [trainer.py] => dataset: cifar100
+2023-08-20 18:30:57,167 [trainer.py] => memory_size: 2000
+2023-08-20 18:30:57,167 [trainer.py] => memory_per_class: 20
+2023-08-20 18:30:57,167 [trainer.py] => fixed_memory: False
+2023-08-20 18:30:57,167 [trainer.py] => shuffle: True
+2023-08-20 18:30:57,167 [trainer.py] => init_cls: 10
+2023-08-20 18:30:57,167 [trainer.py] => increment: 10
+2023-08-20 18:30:57,167 [trainer.py] => model_name: ewc
+2023-08-20 18:30:57,167 [trainer.py] => convnet_type: vit
+2023-08-20 18:30:57,167 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:30:57,167 [trainer.py] => seed: 1993
+2023-08-20 18:30:57,949 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:30:58,308 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:31:01,298 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:31:01,301 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:33:02,785 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:33:02,785 [trainer.py] => prefix: reproduce
+2023-08-20 18:33:02,785 [trainer.py] => dataset: cifar100
+2023-08-20 18:33:02,785 [trainer.py] => memory_size: 2000
+2023-08-20 18:33:02,785 [trainer.py] => memory_per_class: 20
+2023-08-20 18:33:02,785 [trainer.py] => fixed_memory: False
+2023-08-20 18:33:02,785 [trainer.py] => shuffle: True
+2023-08-20 18:33:02,785 [trainer.py] => init_cls: 10
+2023-08-20 18:33:02,785 [trainer.py] => increment: 10
+2023-08-20 18:33:02,785 [trainer.py] => model_name: ewc
+2023-08-20 18:33:02,785 [trainer.py] => convnet_type: vit
+2023-08-20 18:33:02,785 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:33:02,785 [trainer.py] => seed: 1993
+2023-08-20 18:33:03,569 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:33:03,916 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:33:06,811 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:33:06,811 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:33:29,187 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:33:29,187 [trainer.py] => prefix: reproduce
+2023-08-20 18:33:29,187 [trainer.py] => dataset: cifar100
+2023-08-20 18:33:29,187 [trainer.py] => memory_size: 2000
+2023-08-20 18:33:29,187 [trainer.py] => memory_per_class: 20
+2023-08-20 18:33:29,187 [trainer.py] => fixed_memory: False
+2023-08-20 18:33:29,187 [trainer.py] => shuffle: True
+2023-08-20 18:33:29,187 [trainer.py] => init_cls: 10
+2023-08-20 18:33:29,187 [trainer.py] => increment: 10
+2023-08-20 18:33:29,187 [trainer.py] => model_name: ewc
+2023-08-20 18:33:29,187 [trainer.py] => convnet_type: vit
+2023-08-20 18:33:29,187 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:33:29,187 [trainer.py] => seed: 1993
+2023-08-20 18:33:29,926 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:33:30,169 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:33:33,118 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:33:33,118 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:35:30,875 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:35:30,875 [trainer.py] => prefix: reproduce
+2023-08-20 18:35:30,875 [trainer.py] => dataset: cifar100
+2023-08-20 18:35:30,875 [trainer.py] => memory_size: 2000
+2023-08-20 18:35:30,875 [trainer.py] => memory_per_class: 20
+2023-08-20 18:35:30,875 [trainer.py] => fixed_memory: False
+2023-08-20 18:35:30,875 [trainer.py] => shuffle: True
+2023-08-20 18:35:30,875 [trainer.py] => init_cls: 10
+2023-08-20 18:35:30,875 [trainer.py] => increment: 10
+2023-08-20 18:35:30,875 [trainer.py] => model_name: ewc
+2023-08-20 18:35:30,875 [trainer.py] => convnet_type: vit
+2023-08-20 18:35:30,875 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:35:30,875 [trainer.py] => seed: 1993
+2023-08-20 18:35:31,643 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:35:31,978 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:35:34,917 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:35:34,920 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:35:35,088 [trainer.py] => All params: 171816392
+2023-08-20 18:35:35,089 [trainer.py] => Trainable params: 122980
+2023-08-20 18:35:35,090 [ewc.py] => Learning on 0-10
+2023-08-20 18:41:30,988 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:41:30,989 [trainer.py] => prefix: reproduce
+2023-08-20 18:41:30,989 [trainer.py] => dataset: cifar100
+2023-08-20 18:41:30,989 [trainer.py] => memory_size: 2000
+2023-08-20 18:41:30,989 [trainer.py] => memory_per_class: 20
+2023-08-20 18:41:30,989 [trainer.py] => fixed_memory: False
+2023-08-20 18:41:30,989 [trainer.py] => shuffle: True
+2023-08-20 18:41:30,989 [trainer.py] => init_cls: 10
+2023-08-20 18:41:30,989 [trainer.py] => increment: 10
+2023-08-20 18:41:30,989 [trainer.py] => model_name: ewc
+2023-08-20 18:41:30,989 [trainer.py] => convnet_type: vit
+2023-08-20 18:41:30,989 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:41:30,989 [trainer.py] => seed: 1993
+2023-08-20 18:41:31,797 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:41:32,156 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=32, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:41:35,130 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:41:35,131 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:41:35,303 [trainer.py] => All params: 171816392
+2023-08-20 18:41:35,304 [trainer.py] => Trainable params: 122980
+2023-08-20 18:41:35,304 [ewc.py] => Learning on 0-10
+2023-08-20 18:49:27,404 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:49:27,405 [trainer.py] => prefix: reproduce
+2023-08-20 18:49:27,405 [trainer.py] => dataset: cifar100
+2023-08-20 18:49:27,405 [trainer.py] => memory_size: 2000
+2023-08-20 18:49:27,405 [trainer.py] => memory_per_class: 20
+2023-08-20 18:49:27,405 [trainer.py] => fixed_memory: False
+2023-08-20 18:49:27,405 [trainer.py] => shuffle: True
+2023-08-20 18:49:27,405 [trainer.py] => init_cls: 10
+2023-08-20 18:49:27,405 [trainer.py] => increment: 10
+2023-08-20 18:49:27,405 [trainer.py] => model_name: ewc
+2023-08-20 18:49:27,405 [trainer.py] => convnet_type: vit
+2023-08-20 18:49:27,405 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:49:27,405 [trainer.py] => seed: 1993
+2023-08-20 18:49:28,199 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:49:28,491 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:49:31,522 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:49:31,526 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:49:31,693 [trainer.py] => All params: 171816392
+2023-08-20 18:49:31,694 [trainer.py] => Trainable params: 122980
+2023-08-20 18:50:22,647 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:50:22,647 [trainer.py] => prefix: reproduce
+2023-08-20 18:50:22,647 [trainer.py] => dataset: cifar100
+2023-08-20 18:50:22,647 [trainer.py] => memory_size: 2000
+2023-08-20 18:50:22,647 [trainer.py] => memory_per_class: 20
+2023-08-20 18:50:22,647 [trainer.py] => fixed_memory: False
+2023-08-20 18:50:22,647 [trainer.py] => shuffle: True
+2023-08-20 18:50:22,647 [trainer.py] => init_cls: 10
+2023-08-20 18:50:22,647 [trainer.py] => increment: 10
+2023-08-20 18:50:22,647 [trainer.py] => model_name: ewc
+2023-08-20 18:50:22,647 [trainer.py] => convnet_type: vit
+2023-08-20 18:50:22,647 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:50:22,647 [trainer.py] => seed: 1993
+2023-08-20 18:50:23,376 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:50:23,649 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:50:26,541 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:50:26,541 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:50:26,691 [trainer.py] => All params: 171816392
+2023-08-20 18:50:26,692 [trainer.py] => Trainable params: 122980
+2023-08-20 18:51:28,237 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:51:28,237 [trainer.py] => prefix: reproduce
+2023-08-20 18:51:28,237 [trainer.py] => dataset: cifar100
+2023-08-20 18:51:28,237 [trainer.py] => memory_size: 2000
+2023-08-20 18:51:28,237 [trainer.py] => memory_per_class: 20
+2023-08-20 18:51:28,237 [trainer.py] => fixed_memory: False
+2023-08-20 18:51:28,237 [trainer.py] => shuffle: True
+2023-08-20 18:51:28,237 [trainer.py] => init_cls: 10
+2023-08-20 18:51:28,237 [trainer.py] => increment: 10
+2023-08-20 18:51:28,237 [trainer.py] => model_name: ewc
+2023-08-20 18:51:28,237 [trainer.py] => convnet_type: vit
+2023-08-20 18:51:28,237 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:51:28,237 [trainer.py] => seed: 1993
+2023-08-20 18:51:28,964 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:51:29,202 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:51:32,101 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:51:32,102 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:51:32,273 [trainer.py] => All params: 171816392
+2023-08-20 18:51:32,274 [trainer.py] => Trainable params: 122980
+2023-08-20 18:52:19,477 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:52:19,477 [trainer.py] => prefix: reproduce
+2023-08-20 18:52:19,477 [trainer.py] => dataset: cifar100
+2023-08-20 18:52:19,477 [trainer.py] => memory_size: 2000
+2023-08-20 18:52:19,477 [trainer.py] => memory_per_class: 20
+2023-08-20 18:52:19,477 [trainer.py] => fixed_memory: False
+2023-08-20 18:52:19,477 [trainer.py] => shuffle: True
+2023-08-20 18:52:19,477 [trainer.py] => init_cls: 10
+2023-08-20 18:52:19,477 [trainer.py] => increment: 10
+2023-08-20 18:52:19,477 [trainer.py] => model_name: ewc
+2023-08-20 18:52:19,477 [trainer.py] => convnet_type: vit
+2023-08-20 18:52:19,477 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:52:19,477 [trainer.py] => seed: 1993
+2023-08-20 18:52:20,183 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:52:20,390 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:52:23,274 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:52:23,274 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:52:23,449 [trainer.py] => All params: 171816392
+2023-08-20 18:52:23,450 [trainer.py] => Trainable params: 122980
+2023-08-20 18:52:34,704 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 18:52:34,704 [trainer.py] => prefix: reproduce
+2023-08-20 18:52:34,704 [trainer.py] => dataset: cifar100
+2023-08-20 18:52:34,704 [trainer.py] => memory_size: 2000
+2023-08-20 18:52:34,704 [trainer.py] => memory_per_class: 20
+2023-08-20 18:52:34,704 [trainer.py] => fixed_memory: False
+2023-08-20 18:52:34,704 [trainer.py] => shuffle: True
+2023-08-20 18:52:34,704 [trainer.py] => init_cls: 10
+2023-08-20 18:52:34,704 [trainer.py] => increment: 10
+2023-08-20 18:52:34,704 [trainer.py] => model_name: ewc
+2023-08-20 18:52:34,704 [trainer.py] => convnet_type: vit
+2023-08-20 18:52:34,704 [trainer.py] => device: [device(type='mps')]
+2023-08-20 18:52:34,704 [trainer.py] => seed: 1993
+2023-08-20 18:52:35,401 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 18:52:35,584 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 18:52:38,398 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 18:52:38,398 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 18:52:38,562 [trainer.py] => All params: 171816392
+2023-08-20 18:52:38,563 [trainer.py] => Trainable params: 122980
+2023-08-20 18:52:38,564 [ewc.py] => Learning on 0-10
+2023-08-20 20:18:46,549 [trainer.py] => config: ./exps/ewc.json
+2023-08-20 20:18:46,549 [trainer.py] => prefix: reproduce
+2023-08-20 20:18:46,549 [trainer.py] => dataset: cifar100
+2023-08-20 20:18:46,549 [trainer.py] => memory_size: 2000
+2023-08-20 20:18:46,549 [trainer.py] => memory_per_class: 20
+2023-08-20 20:18:46,549 [trainer.py] => fixed_memory: False
+2023-08-20 20:18:46,550 [trainer.py] => shuffle: True
+2023-08-20 20:18:46,550 [trainer.py] => init_cls: 10
+2023-08-20 20:18:46,550 [trainer.py] => increment: 10
+2023-08-20 20:18:46,550 [trainer.py] => model_name: ewc
+2023-08-20 20:18:46,550 [trainer.py] => convnet_type: vit
+2023-08-20 20:18:46,550 [trainer.py] => device: [device(type='mps')]
+2023-08-20 20:18:46,550 [trainer.py] => seed: 1993
+2023-08-20 20:18:47,331 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-20 20:18:47,690 [inc_net.py] => vit args:Namespace(batch_size=8, epochs=10, model='vit_base_patch16_224', input_size=224, pretrained=True, drop=0.0, drop_path=0.0, opt='adam', opt_eps=1e-08, opt_betas=(0.9, 0.999), clip_grad=1.0, momentum=0.9, weight_decay=0.0, reinit_optimizer=True, sched='constant', lr=0.03, lr_noise=None, lr_noise_pct=0.67, lr_noise_std=1.0, warmup_lr=1e-06, min_lr=1e-05, decay_epochs=30, warmup_epochs=5, cooldown_epochs=10, patience_epochs=10, decay_rate=0.1, unscale_lr=True, color_jitter=None, aa=None, smoothing=0.1, train_interpolation='bicubic', reprob=0.0, remode='pixel', recount=1, data_path='./local_datasets/', dataset='Split-CIFAR100', shuffle=False, output_dir='./output', device='cpu', seed=42, eval=False, num_workers=4, pin_mem=True, world_size=1, dist_url='env://', num_tasks=10, train_mask=True, task_inc=False, prompt_pool=True, size=10, length=5, top_k=5, initializer='uniform', prompt_key=True, prompt_key_init='uniform', use_prompt_mask=False, shared_prompt_pool=False, shared_prompt_key=False, batchwise_prompt=True, embedding_key='cls', predefined_key='', pull_constraint=True, pull_constraint_coeff=0.1, global_pool='token', head_type='token', freeze=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], print_freq=10, nb_classes=100, config='./exps/ewc.json')
+2023-08-20 20:18:50,978 [vision_transformer.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 222, 768])
+2023-08-20 20:18:50,981 [vision_transformer.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2023-08-20 20:18:51,183 [trainer.py] => All params: 171816392
+2023-08-20 20:18:51,184 [trainer.py] => Trainable params: 122980
+2023-08-20 20:18:51,186 [ewc.py] => Learning on 0-10

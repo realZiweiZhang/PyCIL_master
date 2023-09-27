@@ -1,0 +1,57 @@
+2023-08-13 10:41:37,917 [trainer.py] => config: ./exps/icarl.json
+2023-08-13 10:41:37,918 [trainer.py] => prefix: reproduce
+2023-08-13 10:41:37,918 [trainer.py] => dataset: cifar100
+2023-08-13 10:41:37,918 [trainer.py] => memory_size: 2000
+2023-08-13 10:41:37,918 [trainer.py] => memory_per_class: 20
+2023-08-13 10:41:37,918 [trainer.py] => fixed_memory: False
+2023-08-13 10:41:37,918 [trainer.py] => shuffle: True
+2023-08-13 10:41:37,918 [trainer.py] => init_cls: 10
+2023-08-13 10:41:37,918 [trainer.py] => increment: 10
+2023-08-13 10:41:37,918 [trainer.py] => model_name: icarl
+2023-08-13 10:41:37,918 [trainer.py] => convnet_type: resnet32
+2023-08-13 10:41:37,918 [trainer.py] => device: [device(type='mps')]
+2023-08-13 10:41:37,918 [trainer.py] => seed: 1993
+2023-08-13 10:42:31,849 [trainer.py] => config: ./exps/icarl.json
+2023-08-13 10:42:31,849 [trainer.py] => prefix: reproduce
+2023-08-13 10:42:31,849 [trainer.py] => dataset: cifar100
+2023-08-13 10:42:31,849 [trainer.py] => memory_size: 2000
+2023-08-13 10:42:31,849 [trainer.py] => memory_per_class: 20
+2023-08-13 10:42:31,849 [trainer.py] => fixed_memory: False
+2023-08-13 10:42:31,849 [trainer.py] => shuffle: True
+2023-08-13 10:42:31,849 [trainer.py] => init_cls: 10
+2023-08-13 10:42:31,849 [trainer.py] => increment: 10
+2023-08-13 10:42:31,849 [trainer.py] => model_name: icarl
+2023-08-13 10:42:31,849 [trainer.py] => convnet_type: resnet32
+2023-08-13 10:42:31,849 [trainer.py] => device: [device(type='mps')]
+2023-08-13 10:42:31,849 [trainer.py] => seed: 1993
+2023-08-13 10:43:03,698 [trainer.py] => config: ./exps/icarl.json
+2023-08-13 10:43:03,698 [trainer.py] => prefix: reproduce
+2023-08-13 10:43:03,698 [trainer.py] => dataset: cifar100
+2023-08-13 10:43:03,698 [trainer.py] => memory_size: 2000
+2023-08-13 10:43:03,698 [trainer.py] => memory_per_class: 20
+2023-08-13 10:43:03,698 [trainer.py] => fixed_memory: False
+2023-08-13 10:43:03,698 [trainer.py] => shuffle: True
+2023-08-13 10:43:03,698 [trainer.py] => init_cls: 10
+2023-08-13 10:43:03,698 [trainer.py] => increment: 10
+2023-08-13 10:43:03,698 [trainer.py] => model_name: icarl
+2023-08-13 10:43:03,698 [trainer.py] => convnet_type: resnet32
+2023-08-13 10:43:03,698 [trainer.py] => device: [device(type='mps')]
+2023-08-13 10:43:03,698 [trainer.py] => seed: 1993
+2023-08-13 10:43:23,123 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-13 10:43:45,847 [trainer.py] => config: ./exps/icarl.json
+2023-08-13 10:43:45,847 [trainer.py] => prefix: reproduce
+2023-08-13 10:43:45,847 [trainer.py] => dataset: cifar100
+2023-08-13 10:43:45,847 [trainer.py] => memory_size: 2000
+2023-08-13 10:43:45,847 [trainer.py] => memory_per_class: 20
+2023-08-13 10:43:45,847 [trainer.py] => fixed_memory: False
+2023-08-13 10:43:45,847 [trainer.py] => shuffle: True
+2023-08-13 10:43:45,847 [trainer.py] => init_cls: 10
+2023-08-13 10:43:45,847 [trainer.py] => increment: 10
+2023-08-13 10:43:45,847 [trainer.py] => model_name: icarl
+2023-08-13 10:43:45,847 [trainer.py] => convnet_type: resnet32
+2023-08-13 10:43:45,847 [trainer.py] => device: [device(type='mps')]
+2023-08-13 10:43:45,847 [trainer.py] => seed: 1993
+2023-08-13 10:43:47,451 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2023-08-13 10:44:07,358 [trainer.py] => All params: 464154
+2023-08-13 10:44:07,359 [trainer.py] => Trainable params: 464154
+2023-08-13 10:44:07,359 [icarl.py] => Learning on 0-10

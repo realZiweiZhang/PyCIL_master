@@ -9,6 +9,6 @@
     "increment": 10,
     "model_name": "ewc",
     "convnet_type": "vit",
-    "device": ["mps"],
+    "device": ["0","1","2","3"],
     "seed": [1993]
 }
