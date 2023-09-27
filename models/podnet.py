@@ -9,11 +9,11 @@ from models.base import BaseLearner
 from utils.inc_net import CosineIncrementalNet
 from utils.toolkit import tensor2numpy
 
-epochs = 160
-lrate = 0.1
+epochs = 5 #160
+lrate = 0.03
 ft_epochs = 20
 ft_lrate = 0.005
-batch_size = 128
+batch_size = 24 #128
 lambda_c_base = 5
 lambda_f_base = 1
 nb_proxy = 10
@@ -72,7 +72,7 @@ class PODNet(BaseLearner):
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
-
+        data_manager.use_l2p_trsf
         train_dset = data_manager.get_dataset(
             np.arange(self._known_classes, self._total_classes),
             source="train",

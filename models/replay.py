@@ -13,20 +13,20 @@ from utils.toolkit import target2onehot, tensor2numpy
 EPSILON = 1e-8
 
 
-init_epoch = 200
-init_lr = 0.1
+init_epoch = 5
+init_lr = 0.03
 init_milestones = [60, 120, 170]
 init_lr_decay = 0.1
 init_weight_decay = 0.0005
 
 
-epochs = 70
-lrate = 0.1
+epochs = 5
+lrate = 0.03
 milestones = [30, 50]
 lrate_decay = 0.1
-batch_size = 128
+batch_size = 24
 weight_decay = 2e-4
-num_workers = 4
+num_workers = 1
 T = 2
 
 
@@ -48,7 +48,9 @@ class Replay(BaseLearner):
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
-
+        from utils.data_manager import trans_data
+        data_manager._train_trsf = trans_data(True)
+        data_manager._test_trsf = trans_data(False)
         # Loader
         train_dataset = data_manager.get_dataset(
             np.arange(self._known_classes, self._total_classes),

@@ -13,18 +13,18 @@ from utils.toolkit import target2onehot, tensor2numpy
 
 EPSILON = 1e-8
 
-init_epoch = 200
-init_lr = 0.1
-init_milestones = [60, 120, 170]
+init_epoch = 5
+init_lr = 0.03
+init_milestones = [1,2,4]#[60, 120, 170]
 init_lr_decay = 0.1
 init_weight_decay = 0.0005
 
 
-epochs = 180
-lrate = 0.1
-milestones = [70, 120, 150]
+epochs = 5
+lrate = 0.03#0.1
+milestones = [1,2,4]#[70, 120, 150]
 lrate_decay = 0.1
-batch_size = 128
+batch_size = 64
 weight_decay = 2e-4
 num_workers = 4
 T = 2
@@ -46,6 +46,7 @@ class EWC(BaseLearner):
         self._total_classes = self._known_classes + data_manager.get_task_size(
             self._cur_task
         )
+        data_manager.use_l2p_trsf
         self._network.update_fc(self._total_classes)
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
@@ -122,7 +123,8 @@ class EWC(BaseLearner):
             correct, total = 0, 0
             for i, (_, inputs, targets) in enumerate(train_loader):
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
-                logits = self._network(inputs)["logits"]
+                logits = self._network(inputs)
+                logits = logits["logits"]
                 loss = F.cross_entropy(logits, targets)
                 optimizer.zero_grad()
                 loss.backward()
@@ -252,3 +254,5 @@ class EWC(BaseLearner):
             fisher[n] = p / len(train_loader)
             fisher[n] = torch.min(fisher[n], torch.tensor(fishermax))
         return fisher
+    
+    

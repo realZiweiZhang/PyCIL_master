@@ -17,6 +17,53 @@ from convs.memo_cifar_resnet import get_resnet32_a2fc as get_memo_resnet32 #for 
 #    from convs.cifar_resnet import resnet32
 #    from convs.linears import SimpleLinear, SplitCosineLinear, CosineLinear
 #    from convs.modified_represnet import resnet18_rep,resnet34_rep
+from timm.models.registry import register_model
+from timm.scheduler import create_scheduler
+from timm.optim import create_optimizer
+from vision_transformer import _create_vision_transformer
+@register_model
+def vit_tiny_patch16_224(pretrained=False, **kwargs):
+    """ ViT-Tiny (Vit-Ti/16)
+    """
+    model_kwargs = dict(patch_size=16, embed_dim=192, depth=12, num_heads=3, **kwargs)
+    model = _create_vision_transformer('vit_tiny_patch16_224', pretrained=pretrained, **model_kwargs)
+    return model
+
+
+@register_model
+def vit_small_patch16_224(pretrained=False, **kwargs):
+    """ ViT-Small (ViT-S/16)
+    NOTE I've replaced my previous 'small' model definition and weights with the small variant from the DeiT paper
+    """
+    model_kwargs = dict(patch_size=16, embed_dim=384, depth=12, num_heads=6, **kwargs)
+    model = _create_vision_transformer('vit_small_patch16_224', pretrained=pretrained, **model_kwargs)
+    return model
+
+@register_model
+def vit_base_patch16_224(pretrained=False, **kwargs):
+    """ ViT-Base (ViT-B/16) from original paper (https://arxiv.org/abs/2010.11929).
+    ImageNet-1k weights fine-tuned from in21k @ 224x224, source https://github.com/google-research/vision_transformer.
+    """
+    model_kwargs = dict(patch_size=16, embed_dim=768, depth=12, num_heads=12, **kwargs)
+    model = _create_vision_transformer('vit_base_patch16_224', pretrained=pretrained, **model_kwargs)
+    return model  
+
+def load_vit_args(json_file):
+    import argparse
+    parser = argparse.ArgumentParser('L2P training and evaluation configs')
+        
+    if json_file["dataset"] == 'cifar100':
+        from configs.cifar100_l2p import get_args_parser
+    else:
+        raise NotImplementedError
+    
+    get_args_parser(parser)
+    args = parser.parse_args()
+    logging.info('vit args:{}'.format(args))
+    args_dict = vars(args)
+    args_dict.update(json_file)
+    return args
+
 def get_convnet(args, pretrained=False):
     name = args["convnet_type"].lower()
     if name == "resnet32":
@@ -52,6 +99,9 @@ def get_convnet(args, pretrained=False):
         _basenet, _adaptive_net = get_memo_resnet32()
         return _basenet, _adaptive_net
     
+    elif name == 'vit':
+        #return L2PNet(load_vit_args(args))
+        return vit_backnone(load_vit_args(args))
     else:
         raise NotImplementedError("Unknown type {}".format(name))
 
@@ -125,6 +175,10 @@ class IncrementalNet(BaseNet):
         if hasattr(self, "gradcam") and self.gradcam:
             self._gradcam_hooks = [None, None]
             self.set_gradcam_hook()
+                
+        self.conv_backbone = True
+        if args["convnet_type"] == "vit":
+            self.conv_backbone = False
 
     def update_fc(self, nb_classes):
         fc = self.generate_fc(self.feature_dim, nb_classes)
@@ -154,13 +208,16 @@ class IncrementalNet(BaseNet):
 
     def forward(self, x):
         x = self.convnet(x)
-        
-        out = self.fc(x["features"])
-        out.update(x)
+        if self.conv_backbone:
+            out = self.fc(x["features"])
+        else: 
+            out = self.fc(x["pre_logits"])
+            out['features'] = x["pre_logits"]
+
+        #out.update(x)
         if hasattr(self, "gradcam") and self.gradcam:
             out["gradcam_gradients"] = self._gradcam_gradients
             out["gradcam_activations"] = self._gradcam_activations
-
         return out
 
     def unset_gradcam_hook(self):
@@ -204,7 +261,10 @@ class CosineIncrementalNet(BaseNet):
     def __init__(self, args, pretrained, nb_proxy=1):
         super().__init__(args, pretrained)
         self.nb_proxy = nb_proxy
-
+        # change to vit backbone
+        self.conv_backbone = True
+        if args["convnet_type"] == "vit":
+            self.conv_backbone = False
     def update_fc(self, nb_classes, task_num):
         fc = self.generate_fc(self.feature_dim, nb_classes)
         if self.fc is not None:
@@ -258,10 +318,20 @@ class IncrementalNetWithBias(BaseNet):
         self.bias_correction = bias_correction
         self.bias_layers = nn.ModuleList([])
         self.task_sizes = []
+        
+        # change to vit backbone
+        self.conv_backbone = True
+        if args["convnet_type"] == "vit":
+            self.conv_backbone = False
 
     def forward(self, x):
         x = self.convnet(x)
-        out = self.fc(x["features"])
+        if self.conv_backbone:
+            out = self.fc(x["features"])
+        else: 
+            out = self.fc(x["pre_logits"])
+            out['features'] = x["pre_logits"]
+        #out = self.fc(x["features"])
         if self.bias_correction:
             logits = out["logits"]
             for i, layer in enumerate(self.bias_layers):
@@ -270,7 +340,7 @@ class IncrementalNetWithBias(BaseNet):
                 )
             out["logits"] = logits
 
-        out.update(x)
+        #out.update(x)
 
         return out
 
@@ -826,7 +896,7 @@ class L2PNet(nn.Module):
     def __init__(self, args, pretrained=True):
         super(L2PNet, self).__init__()
         from timm.models import create_model
-        print(f"Creating original model: {args.model}")
+        #print(f"Creating original model: {args.model}")
         self.original_model = create_model(
             args.model,
             pretrained=args.pretrained,
@@ -835,7 +905,7 @@ class L2PNet(nn.Module):
             drop_path_rate=args.drop_path,
             drop_block_rate=None,
         )
-        print(f"Creating original model: {args.model}")
+        #print(f"Creating original model: {args.model}")
         self.model = create_model(
             args.model,
             pretrained=args.pretrained,
@@ -854,7 +924,12 @@ class L2PNet(nn.Module):
             prompt_key_init=args.prompt_key_init,
             head_type=args.head_type,
             use_prompt_mask=args.use_prompt_mask,
+            multi_view = args.multi_view,
+            view_num = args.view_num,
+            use_pre_encoder = args.use_pre_encoder,
+            cut = args.cut
         )
+
         if args.freeze:
             # all parameters are frozen for original vit model
             if self.original_model:
@@ -867,23 +942,41 @@ class L2PNet(nn.Module):
                     p.requires_grad = False
                 else:
                     p.requires_grad = True
-
-        # if args.unscale_lr:
-        #     global_batch_size = args.batch_size
-        # else:
-        #     global_batch_size = args.batch_size * args.world_size
-        # args.lr = args.lr * global_batch_size / 256.0
+        self.out_dim = 768
 
     def forward(self, x, task_id=-1):
+        from einops import rearrange
+        x =  rearrange(x, 'b v h w c -> (b v) h w c')
+        assert len(x.shape) == 4
         if self.original_model:
             self.original_model.eval()
+        output = {}
         with torch.no_grad():
             if self.original_model is not None:
                 output = self.original_model(x)
                 cls_features = output['pre_logits']
             else:
                 cls_features = None
-
         self.model.train(True)
-        output = self.model(x, task_id=task_id, cls_features=cls_features, train=True)
+        
+        outputs = self.model(x, task_id=task_id, cls_features=cls_features, train=True)
+        output['logits'] = outputs['logits']
+        return output
+
+class vit_backnone(nn.Module):
+    def __init__(self, args, pretrained=True):
+        super(vit_backnone, self).__init__()
+        from timm.models import create_model
+        #print(f"Creating original model: {args.model}")
+        self.original_model = create_model(
+            args.model,
+            pretrained=args.pretrained,
+            num_classes=args.nb_classes,
+            drop_rate=args.drop,
+            drop_path_rate=args.drop_path,
+            drop_block_rate=None,
+        )
+        self.out_dim = 768
+    def forward(self, x, task_id=-1):
+        output = self.original_model(x, train=True)
         return output

@@ -20,6 +20,8 @@ from timm.models.registry import register_model
 from timm.scheduler import create_scheduler
 from timm.optim import create_optimizer
 from timm.models import create_model
+
+from einops import rearrange
 from vision_transformer import _create_vision_transformer
 from utils.toolkit import target2onehot, tensor2numpy
 import argparse
@@ -29,7 +31,7 @@ import torch.backends.cudnn as cudnn
 
 init_epoch = 5
 epochs =5
-num_workers = 8
+num_workers = 2
 
 class L2P(BaseLearner):
     def __init__(self, json_file):
@@ -37,6 +39,8 @@ class L2P(BaseLearner):
         parser = argparse.ArgumentParser('L2P training and evaluation configs')
         
         if json_file["dataset"] == 'cifar100':
+            from configs.cifar100_l2p import get_args_parser
+        elif json_file["dataset"][:8] == 'modelnet':
             from configs.cifar100_l2p import get_args_parser
         else:
             raise NotImplementedError
@@ -68,9 +72,9 @@ class L2P(BaseLearner):
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
 
-        data_manager._train_trsf = self.trans_data(True)
-        data_manager._test_trsf = self.trans_data(False)
-        data_manager._common_trsf = []
+        # data_manager._train_trsf = self.trans_data(True)
+        # data_manager._test_trsf = self.trans_data(False)
+        # data_manager._common_trsf = []
         train_dataset = data_manager.get_dataset(
             np.arange(self._known_classes, self._total_classes),
             source="train",
@@ -81,7 +85,8 @@ class L2P(BaseLearner):
                 batch_size=self.args.batch_size,
                 shuffle=True,
                 num_workers=self.args.num_workers,
-                pin_memory=self.args.pin_mem,
+                pin_memory = False,
+                #pin_memory=self.args.pin_mem,
         )
         test_dataset = data_manager.get_dataset(
             np.arange(0, self._total_classes), source="test", mode="test"
@@ -90,7 +95,8 @@ class L2P(BaseLearner):
                 test_dataset,
                 batch_size=self.args.batch_size,
                 num_workers=self.args.num_workers,
-                pin_memory=self.args.pin_mem,
+                pin_memory = False,
+                #pin_memory=self.args.pin_mem,
         )
 
         n_parameters = sum(p.numel() for p in self._network.parameters() if p.requires_grad)
@@ -124,11 +130,14 @@ class L2P(BaseLearner):
             losses = 0.0
             correct, total = 0, 0
             for i, (_, inputs, targets) in enumerate(train_loader):
-                inputs, targets = inputs.to(self._device), targets.to(self._device)
-
+                inputs, targets = inputs.to(self._device), targets.to(self._device) # b v c h 
+                #inputs = rearrange(inputs, 'b v h w c -> (b v) h w c')
+                #assert len(inputs.shape) == 4
+                #targets = targets.unsqueeze(-1).repeat(1,6)
+                #targets = rearrange(targets, 'b v-> (b v)')
+                
                 output = self._network(inputs, task_id=self._cur_task)
-                logits = output['logits']
-                logits = logits.index_fill(dim=1, index=self.fc_mask().to(self._device), value=float('-inf'))
+                logits = output['logits'].index_fill(dim=1, index=self.fc_mask().to(self._device), value=float('-inf'))
 
                 losses = F.cross_entropy(logits, targets.long()).to(self._device)
                 if self.args.pull_constraint and 'reduce_sim' in output:
@@ -226,6 +235,12 @@ class L2P(BaseLearner):
                 self._network.train()
                 
                 inputs, targets = inputs.to(self._device), targets.to(self._device)
+                #if len(inputs.shape) == 5:
+                #    inputs = rearrange(inputs, 'b v h w c -> (b v) h w c')
+                    #targets = targets.unsqueeze(-1).repeat(1,6)
+                    #targets = rearrange(targets, 'b v-> (b v)')
+                    #assert len(targets.shape) == 1 and len(inputs.shape) == 4
+
                 output = self._network(inputs, self._cur_task)
                 logits = output["logits"]
                 logits = logits.index_fill(dim=1, index=self.fc_mask().to(self._device), value=float('-inf'))

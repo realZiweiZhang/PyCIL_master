@@ -47,14 +47,20 @@ class FeTrIL(BaseLearner):
         
     def incremental_train(self, data_manager):
         self.data_manager = data_manager
-        self.data_manager._train_trsf = [
-        transforms.RandomCrop(32, padding=4),
-        transforms.RandomHorizontalFlip(),
-        transforms.ColorJitter(brightness=63/255),
-        CIFAR10Policy(),
-        transforms.ToTensor(),
-        Cutout(n_holes=1, length=16),
-        ]
+        # size = int((256 / 224) * 224)
+        # self.data_manager._train_trsf = [
+        # transforms.Resize(size, interpolation=3),
+        # transforms.RandomCrop(224, padding=4),
+        # transforms.RandomHorizontalFlip(),
+        # transforms.ColorJitter(brightness=63/255),
+        # CIFAR10Policy(),
+        # transforms.ToTensor(),
+        # Cutout(n_holes=1, length=16),
+        # ]
+        from utils.data_manager import trans_data
+        data_manager._train_trsf = trans_data(True)
+        data_manager._test_trsf = trans_data(False)
+        data_manager._common_trsf = []
         self._cur_task += 1
 
         self._total_classes = self._known_classes + \

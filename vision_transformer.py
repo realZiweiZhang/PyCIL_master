@@ -335,7 +335,8 @@ class VisionTransformer(nn.Module):
             class_token=True, no_embed_class=False, fc_norm=None, drop_rate=0., attn_drop_rate=0., drop_path_rate=0.,
             weight_init='', embed_layer=PatchEmbed, norm_layer=None, act_layer=None, block_fn=Block,
             prompt_length=None, embedding_key='cls', prompt_init='uniform', prompt_pool=False, prompt_key=False, pool_size=None,
-            top_k=None, batchwise_prompt=False, prompt_key_init='uniform', head_type='token', use_prompt_mask=False,):
+            top_k=None, batchwise_prompt=False, prompt_key_init='uniform', head_type='token', use_prompt_mask=False,
+            multi_view=False, view_num=6, use_pre_encoder=False, cut=0):
         """
         Args:
             img_size (int, tuple): input image size
@@ -360,6 +361,8 @@ class VisionTransformer(nn.Module):
             act_layer: (nn.Module): MLP activation layer
             block_fn: (nn.Module): transformer block
             prompt_pool (bool): use prompt pool or not
+            multi_view: 
+            use_pre_encoder
         """
         super().__init__()
         assert global_pool in ('', 'avg', 'token')
@@ -380,11 +383,15 @@ class VisionTransformer(nn.Module):
         self.patch_embed = embed_layer(
             img_size=img_size, patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim)
         num_patches = self.patch_embed.num_patches
-
+        
         self.cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim)) if class_token else None
         embed_len = num_patches if no_embed_class else num_patches + self.num_prefix_tokens
+        pre_embed_len = embed_len
         if prompt_length is not None and pool_size is not None and prompt_pool:
             embed_len += prompt_length * top_k
+            if multi_view:
+                self.view_num = view_num
+                embed_len = 6*embed_len 
         self.pos_embed = nn.Parameter(torch.randn(1, embed_len, embed_dim) * .02)
         self.pos_drop = nn.Dropout(p=drop_rate)
 
@@ -392,17 +399,31 @@ class VisionTransformer(nn.Module):
         self.head_type = head_type
         self.use_prompt_mask = use_prompt_mask
         
+        self.use_pre_encoder = use_pre_encoder
+        self.cut = cut
         if prompt_length is not None and pool_size is not None and prompt_pool: 
             self.prompt = Prompt(length=prompt_length, embed_dim=embed_dim, embedding_key=embedding_key, prompt_init=prompt_init,
                     prompt_pool=prompt_pool, prompt_key=prompt_key, pool_size=pool_size, top_k=top_k, batchwise_prompt=batchwise_prompt,
                     prompt_key_init=prompt_key_init,)
 
         dpr = [x.item() for x in torch.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
+        
+        if self.use_pre_encoder:   
+            print('split vit to two blocks',{self.cut})
+            self.pre_cls_token = nn.Parameter(torch.zeros(1, 1, embed_dim)) if class_token else None
+            self.pre_pos_embed = nn.Parameter(torch.randn(1, pre_embed_len, embed_dim) * .02)
+            self.pre_blocks = nn.Sequential(*[
+                block_fn(
+                dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, init_values=init_values,
+                drop=drop_rate, attn_drop=attn_drop_rate, drop_path=dpr[i], norm_layer=norm_layer, act_layer=act_layer)
+            for i in range(self.cut)])
+        else:
+            assert self.cut == 0
         self.blocks = nn.Sequential(*[
             block_fn(
                 dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, init_values=init_values,
                 drop=drop_rate, attn_drop=attn_drop_rate, drop_path=dpr[i], norm_layer=norm_layer, act_layer=act_layer)
-            for i in range(depth)])
+            for i in range(depth-self.cut)])
         self.norm = norm_layer(embed_dim) if not use_fc_norm else nn.Identity()
 
         # Classifier Head
@@ -456,7 +477,18 @@ class VisionTransformer(nn.Module):
 
     def forward_features(self, x, task_id=-1, cls_features=None, train=False):
         x = self.patch_embed(x)
+        
+        if self.use_pre_encoder:
+            #x = self.patch_embed_new(x)
 
+            cls_token = self.pre_cls_token.expand(x.shape[0], -1, -1) 
+            x = torch.cat((cls_token, x), dim=1)
+            x = self.pos_drop(x + self.pre_pos_embed)
+            x = self.pre_blocks(x)  # (b v) c h w
+            #B, N, C = x.shape
+            # if hasattr(self,'view_num'):
+            #     x = x.reshape(B//self.view_num, N*self.view_num, C)
+        
         if hasattr(self, 'prompt'):
             if self.use_prompt_mask and train:
                 start = task_id * self.prompt.top_k
@@ -472,10 +504,10 @@ class VisionTransformer(nn.Module):
             x = res['prompted_embedding']
         else:
             res=dict()
-        if self.cls_token is not None:
-            x = torch.cat((self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
+        # if self.cls_token is not None:
+        #     x = torch.cat((self.cls_token.expand(x.shape[0], -1, -1), x), dim=1)
         
-        x = self.pos_drop(x + self.pos_embed)
+        #x = self.pos_drop(x + self.pos_embed)
 
         if self.grad_checkpointing and not torch.jit.is_scripting():
             x = checkpoint_seq(self.blocks, x)
@@ -503,7 +535,7 @@ class VisionTransformer(nn.Module):
             raise ValueError(f'Invalid classifier={self.classifier}')
         
         res['pre_logits'] = x
-
+        res['features'] = x
         x = self.fc_norm(x)
         
         res['logits'] = self.head(x)
@@ -1141,4 +1173,11 @@ def vit_base_patch16_18x2_224(pretrained=False, **kwargs):
     model_kwargs = dict(
         patch_size=16, embed_dim=768, depth=18, num_heads=12, init_values=1e-5, block_fn=ParallelBlock, **kwargs)
     model = _create_vision_transformer('vit_base_patch16_18x2_224', pretrained=pretrained, **model_kwargs)
+    return model
+
+@register_model
+def vit_base_patch8_18x2_32(pretrained=False, **kwargs):
+    model_kwargs = dict(
+        img_size=32,patch_size=4, embed_dim=768, depth=18, num_heads=12, init_values=1e-5, block_fn=ParallelBlock, **kwargs)
+    model = _create_vision_transformer('vit_base_patch8_18x2_32', pretrained=pretrained, **model_kwargs)
     return model

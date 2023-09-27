@@ -13,20 +13,20 @@ from utils.toolkit import target2onehot, tensor2numpy
 
 EPSILON = 1e-8
 
-init_epoch = 200
-init_lr = 0.1
-init_milestones = [60, 120, 170]
+init_epoch = 5
+init_lr = 0.03
+init_milestones = [3, 6, 9]
 init_lr_decay = 0.1
 init_weight_decay = 0.0005
 
 
-epochs = 170
+epochs = 5
 lrate = 0.1
-milestones = [80, 120]
+milestones = [4,6]#[80, 120]
 lrate_decay = 0.1
 batch_size = 128
 weight_decay = 2e-4
-num_workers = 8
+num_workers = 3
 T = 2
 
 
@@ -45,6 +45,10 @@ class iCaRL(BaseLearner):
         self._total_classes = self._known_classes + data_manager.get_task_size(
             self._cur_task
         )
+        data_manager._train_trsf = self.trans_data(True)
+        data_manager._test_trsf = self.trans_data(False)
+        data_manager._common_trsf = []
+
         self._network.update_fc(self._total_classes)
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
@@ -199,6 +203,32 @@ class iCaRL(BaseLearner):
         logging.info(info)
 
 
+    def trans_data(self,is_train):
+        from torchvision import transforms
+        input_size = 224
+        resize_im = input_size > 32
+        if is_train:
+            scale = (0.05, 1.0)
+            ratio = (3. / 4., 4. / 3.)
+            
+            return  [
+                transforms.RandomResizedCrop(input_size, scale=scale, ratio=ratio),
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.ToTensor(),
+            ]
+            return transform
+
+        t = []
+        if resize_im:
+            size = int((256 / 224) * input_size)
+            t.append(
+                transforms.Resize(size, interpolation=3),  # to maintain same ratio w.r.t. 224 images
+            )
+            t.append(transforms.CenterCrop(input_size))
+        t.append(transforms.ToTensor())
+        
+        return t
+    
 def _KD_loss(pred, soft, T):
     pred = torch.log_softmax(pred / T, dim=1)
     soft = torch.softmax(soft / T, dim=1)

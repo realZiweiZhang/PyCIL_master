@@ -47,13 +47,23 @@ def _train(args):
     _set_random()
     _set_device(args)
     print_args(args)
-    data_manager = DataManager(
-        args["dataset"],
-        args["shuffle"],
-        args["seed"],
-        args["init_cls"],
-        args["increment"],
-    )
+    if args["dataset"][:8] == 'modelnet':
+        from utils import mv_data_manager
+        data_manager = mv_data_manager.DataManager(
+            args["dataset"],
+            args["shuffle"],
+            args["seed"],
+            args["init_cls"],
+            args["increment"],
+        )
+    else:
+        data_manager = DataManager(
+            args["dataset"],
+            args["shuffle"],
+            args["seed"],
+            args["init_cls"],
+            args["increment"],
+        )
     model = factory.get_model(args["model_name"], args)
 
     cnn_curve, nme_curve = {"top1": [], "top5": []}, {"top1": [], "top5": []}
@@ -67,7 +77,7 @@ def _train(args):
         model.after_task()
 
         if nme_accy is not None:
-            logging.info("CNN: {}".format(cnn_accy["grouped"]))
+            logging.info("CNN: {}".format(cnn_accy["grouped"])) #每个类别的正确率情况
             logging.info("NME: {}".format(nme_accy["grouped"]))
 
             cnn_curve["top1"].append(cnn_accy["top1"])
@@ -113,7 +123,7 @@ def _set_device(args):
         gpus.append(device)
 
     args["device"] = gpus
-    #args["device"] = torch.device("cpu")
+    #args["device"] = [torch.device("cpu")]
 
 def _set_random():
     torch.manual_seed(1)

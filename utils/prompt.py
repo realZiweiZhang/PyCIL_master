@@ -87,6 +87,9 @@ class Prompt(nn.Module):
             batch_size, top_k, length, c = batched_prompt_raw.shape
             batched_prompt = batched_prompt_raw.reshape(batch_size, top_k * length, c) # B, top_k * length, C
 
+            from einops import rearrange
+            batched_prompt = rearrange(batched_prompt,'(b n) prompt_len c -> b (n prompt_len) c', n = 6)
+            x_embed = rearrange(x_embed,'(b n) prompt_len c -> b (n prompt_len) c', n = 6) # b*n patch*patch, dim
             out['prompt_idx'] = idx
 
             # Debugging, return sim as well

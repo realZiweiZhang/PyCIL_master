@@ -20,20 +20,20 @@ except:
 EPSILON = 1e-8
 
 
-init_epoch = 200
+init_epoch = 5#200
 init_lr = 0.1
 init_milestones = [60, 120, 170]
 init_lr_decay = 0.1
 init_weight_decay = 0.0005
 
 
-epochs = 100
+epochs = 5#100
 lrate = 0.1
 milestones = [30, 60, 80]
 lrate_decay = 0.1
-batch_size = 128
+batch_size = 2
 weight_decay = 2e-4
-num_workers = 4
+num_workers = 1
 
 
 class GEM(BaseLearner):
@@ -57,7 +57,9 @@ class GEM(BaseLearner):
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
-
+        from utils.data_manager import trans_data
+        data_manager._train_trsf = trans_data(True)
+        data_manager._test_trsf = trans_data(False)
         train_dataset = data_manager.get_dataset(
             np.arange(self._known_classes, self._total_classes),
             source="train",

@@ -5,8 +5,8 @@ def get_args_parser(subparsers):
     subparsers.add_argument('--epochs', default=10, type=int)
 
     # Model parameters
-    subparsers.add_argument('--model', default='vit_base_patch16_224', type=str, metavar='MODEL', help='Name of model to train')
-    subparsers.add_argument('--input-size', default=224, type=int, help='images input size')
+    subparsers.add_argument('--model', default='vit_base_patch16_224', type=str, metavar='MODEL', help='Name of model to train') #vit_base_patch16_224
+    subparsers.add_argument('--input-size', default=224, type=int, help='images input size') #224
     subparsers.add_argument('--pretrained', default=True, help='Load pretrained model or not')
     subparsers.add_argument('--drop', type=float, default=0.0, metavar='PCT', help='Dropout rate (default: 0.)')
     subparsers.add_argument('--drop-path', type=float, default=0.0, metavar='PCT', help='Drop path rate (default: 0.)')
@@ -54,7 +54,7 @@ def get_args_parser(subparsers):
     subparsers.add_argument('--dataset', default='Split-CIFAR100', type=str, help='dataset name')
     subparsers.add_argument('--shuffle', default=False, help='shuffle the data order')
     subparsers.add_argument('--output_dir', default='./output', help='path where to save, empty for no saving')
-    subparsers.add_argument('--device', default='cpu', help='device to use for training / testing')
+    #subparsers.add_argument('--device', default='cpu', help='device to use for training / testing')
     subparsers.add_argument('--seed', default=42, type=int)
     subparsers.add_argument('--eval', action='store_true', help='Perform evaluation only')
     subparsers.add_argument('--num_workers', default=4, type=int)
@@ -93,8 +93,8 @@ def get_args_parser(subparsers):
 
     # ViT parameters
     subparsers.add_argument('--global_pool', default='token', choices=['token', 'avg'], type=str, help='type of global pooling for final sequence')
-    subparsers.add_argument('--head_type', default='token', choices=['token', 'gap', 'prompt', 'token+prompt'], type=str, help='input type of classification head')
-    subparsers.add_argument('--freeze', default=['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed'], nargs='*', type=list, help='freeze part in backbone model')
+    subparsers.add_argument('--head_type', default='token+prompt', choices=['token', 'gap', 'prompt', 'token+prompt'], type=str, help='input type of classification head')
+    subparsers.add_argument('--freeze', default=['pre_blocks','blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed','pre_pos_embed','pre_cls_token'], nargs='*', type=list, help='freeze part in backbone model')
 
     # Misc parameters
     subparsers.add_argument('--print_freq', type=int, default=10, help = 'The frequency of printing')
@@ -102,3 +102,9 @@ def get_args_parser(subparsers):
     # PyCIL parameters
     subparsers.add_argument('--nb_classes', default=100, type=int, help = 'add params for PyCIL-master')
     subparsers.add_argument('--config', default=None, type=str, help = 'add params from PyCIL-master')
+
+    # multi-view parameters
+    subparsers.add_argument('--multi_view', default=True, type=bool, help = 'add params for multi-view')
+    subparsers.add_argument('--view_num', default=6, type=int, help = 'add params from multi-view')
+    subparsers.add_argument('--use_pre_encoder', default=True, type=bool, help = 'add params from multi-view')
+    subparsers.add_argument('--cut', default=4, type=int, help = 'add params from multi-view')

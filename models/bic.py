@@ -9,11 +9,11 @@ from models.base import BaseLearner
 from utils.inc_net import IncrementalNetWithBias
 
 
-epochs = 170
-lrate = 0.1
+epochs = 10#170
+lrate = 0.03
 milestones = [60, 100, 140]
 lrate_decay = 0.1
-batch_size = 128
+batch_size = 24
 split_ratio = 0.1
 T = 2
 weight_decay = 2e-4
@@ -42,7 +42,7 @@ class BiC(BaseLearner):
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
-
+        data_manager.use_l2p_trsf
         if self._cur_task >= 1:
             train_dset, val_dset = data_manager.get_dataset_with_split(
                 np.arange(self._known_classes, self._total_classes),

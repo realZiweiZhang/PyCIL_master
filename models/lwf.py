@@ -11,18 +11,18 @@ from utils.inc_net import IncrementalNet
 from models.base import BaseLearner
 from utils.toolkit import target2onehot, tensor2numpy
 
-init_epoch = 200
-init_lr = 0.1
+init_epoch = 5 #200
+init_lr = 0.03 #0.1
 init_milestones = [60, 120, 160]
 init_lr_decay = 0.1
 init_weight_decay = 0.0005
 
 
-epochs = 250
-lrate = 0.1
+epochs = 5 #250
+lrate = 0.03 #0.1
 milestones = [60, 120, 180, 220]
 lrate_decay = 0.1
-batch_size = 128
+batch_size = 64
 weight_decay = 2e-4
 num_workers = 8
 T = 2
@@ -47,7 +47,7 @@ class LwF(BaseLearner):
         logging.info(
             "Learning on {}-{}".format(self._known_classes, self._total_classes)
         )
-
+        data_manager.use_l2p_trsf
         train_dataset = data_manager.get_dataset(
             np.arange(self._known_classes, self._total_classes),
             source="train",

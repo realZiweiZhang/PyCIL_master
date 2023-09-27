@@ -22,6 +22,12 @@ class DataManager(object):
     def nb_tasks(self):
         return len(self._increments)
 
+    @property
+    def use_l2p_trsf(self):
+        self._train_trsf = trans_data(True)
+        self._test_trsf = trans_data(False)
+        self._common_trsf = []
+        
     def get_task_size(self, task):
         return self._increments[task]
     
@@ -317,3 +323,31 @@ def default_loader(path):
         return accimage_loader(path)
     else:
         return pil_loader(path)
+
+
+def trans_data(is_train):
+        from torchvision import transforms
+
+        input_size = 224
+        resize_im = input_size > 32
+        if is_train:
+            scale = (0.05, 1.0)
+            ratio = (3. / 4., 4. / 3.)
+            
+            return  [
+                transforms.RandomResizedCrop(input_size, scale=scale, ratio=ratio),
+                transforms.RandomHorizontalFlip(p=0.5),
+                transforms.ToTensor(),
+            ]
+            return transform
+
+        t = []
+        if resize_im:
+            size = int((256 / 224) * input_size)
+            t.append(
+                transforms.Resize(size, interpolation=3),  # to maintain same ratio w.r.t. 224 images
+            )
+            t.append(transforms.CenterCrop(input_size))
+        t.append(transforms.ToTensor())
+        
+        return t

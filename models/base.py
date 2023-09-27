@@ -7,6 +7,7 @@ from torch.utils.data import DataLoader
 from utils.toolkit import tensor2numpy, accuracy
 from scipy.spatial.distance import cdist
 import os
+from einops import rearrange
 
 EPSILON = 1e-8
 batch_size = 64
@@ -123,6 +124,11 @@ class BaseLearner(object):
         correct, total = 0, 0
         for i, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
+            # if len(inputs.shape) == 5:
+            #     inputs = rearrange(inputs, 'b v h w c -> (b v) h w c')
+            #     targets = targets.unsqueeze(-1).repeat(1,6)
+            #     targets = rearrange(targets, 'b v-> (b v)')
+            #assert len(inputs.shape) == 4
             with torch.no_grad():
                 outputs = model(inputs)["logits"]
             predicts = torch.max(outputs, dim=1)[1]
@@ -136,6 +142,11 @@ class BaseLearner(object):
         y_pred, y_true = [], []
         for _, (_, inputs, targets) in enumerate(loader):
             inputs = inputs.to(self._device)
+            # if len(inputs.shape) == 5:
+            #     inputs = rearrange(inputs, 'b v h w c -> (b v) h w c')
+            #     targets = targets.unsqueeze(-1).repeat(1,6)
+            #     targets = rearrange(targets, 'b v-> (b v)')
+            #assert len(inputs.shape) == 4
             with torch.no_grad():
                 outputs = self._network(inputs)["logits"]
             predicts = torch.topk(
@@ -162,6 +173,11 @@ class BaseLearner(object):
         self._network.eval()
         vectors, targets = [], []
         for _, _inputs, _targets in loader:
+            # if len(_inputs.shape) == 5:
+            #     _inputs = rearrange(_inputs, 'b v h w c -> (b v) h w c')
+            #     _targets = _targets.unsqueeze(-1).repeat(1,6)
+            #     _targets = rearrange(_targets, 'b v-> (b v)')
+            #assert len(_inputs.shape) == 4
             _targets = _targets.numpy()
             if isinstance(self._network, nn.DataParallel):
                 _vectors = tensor2numpy(
